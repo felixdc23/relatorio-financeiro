@@ -1,0 +1,22 @@
+name: relatorio-de-baixas
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Versão do Python
+  - python=3.11
+
+  # Bibliotecas principais
+  - pandas
+  - openpyxl
+  - numpy
+
+  # Jupyter
+  - jupyterlab
+
+  # Ferramentas úteis de desenvolvimento
+  - pip
+  - pip:
+      - black       # formatação opcional
+      - isort       # organização de imports
