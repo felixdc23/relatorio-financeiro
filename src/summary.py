@@ -1,16 +1,12 @@
-import pandas as pd
+from pandas import DataFrame
 
-class Summary(pd.DataFrame):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        df = pd.DataFrame(
-            columns=['PRT', 'MOT', 'Valor Original', 'Jur/Multa', 'Correcao', 'Descontos', 'Abatimentos', 'Impostos',
-                     'Valor Acessorio', 'Total Baixado'])
-
+class Summary:
+    def __init__(self, df: DataFrame):
+        self._df = df  # mantém o DataFrame original
 
     def create_dataframe(self):
         rows = []
-        for (prt, mot), group in self.get().groupby(["Prf", "Mot"]):
+        for (prt, mot), group in self._df.groupby(["Prf", "Mot"]):
             rows.append({
                 "PRT": prt,
                 "MOT": mot,
@@ -23,7 +19,7 @@ class Summary(pd.DataFrame):
                 "Valor Acessorio": group["Valor Acessorio"].sum(),
                 "Total Baixado": group["Total Baixado"].sum(),
             })
-        return rows
+        return DataFrame(rows)
 
-    def get_dataframe(self):
-        return pd.concat(self.df, self.create_dataframe())
+    def get_dataset(self):
+        return self.create_dataframe()

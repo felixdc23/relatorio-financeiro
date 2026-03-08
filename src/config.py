@@ -5,6 +5,12 @@ class Paths:
 
 class Excel:
     EXTENSION = ".xlsx"
+    SETTLEMENTS_SHEET = "Baixas"
+    PAYABLES_SHEET = "Saldo a receber"
+    OPEN_PAYMENTS_SHEET = "Saldo RA"
+    SUMMARY_SHEET = "Resumo"
+    REPORT_SHEET = "Relatorio"
+    TOTALS_SHEET = "Saldo a receber"
 
 class Settlement:
     FILENAME = "finr190.xlsx"
@@ -12,11 +18,18 @@ class Settlement:
     SKIPROWS = 1
     HEADER = 0
 
-class Payable:
+class Receivable:
     FILENAME = "finr130.xlsx"
     SHEET_NAME = "Titulos a receber"
     SKIPROWS = 1
     HEADER = 0
+
+class Totals:
+    FILENAME = "finr130.xlsx"
+    SHEET_NAME = "Totais"
+    SKIPROWS = 1
+    HEADER = 0
+
 class OpenPayment:
     FILENAME = "fina740.xlsx"
     SHEET_NAME = "Listagem do Browse"

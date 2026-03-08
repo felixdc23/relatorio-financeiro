@@ -13,3 +13,8 @@ class GenericDataset(DataFrameLoader):
             skiprows=config_class.SKIPROWS,
             header=config_class.HEADER
         )
+
+        self.col_fix()
+
+    def col_fix(self):
+        self.get_dataset().columns = [col.replace('_x000D_\n', ' ') for col in self.get_dataset().columns]
