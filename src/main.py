@@ -1,29 +1,36 @@
 import config
-import pandas as pd
-from src.generic_dataset import GenericDataset
-from src.report import Report
-from src.summary import Summary
+from base.generic_dataset import GenericDataset
+from base.reports import Report
+from base.summary import Summary
+from base.reports import ReportCompiler
+from base.reports import ExcelReportWriter
 
-ref_date = "28-02-2026"
+def main():
+    settlements = GenericDataset(config.Settlement)
+    totals = GenericDataset(config.Totals)
 
-settlements = GenericDataset(config.Settlement)
+    summary = Summary(settlements.get_dataset())
+    receivable = GenericDataset(config.Receivable)
+    open_payments = GenericDataset(config.OpenPayment)
 
-receivable = GenericDataset(config.Receivable)
+    report = Report(summary, receivable, open_payments, totals)
 
-open_payments = GenericDataset(config.OpenPayment)
+    report_compiler = ReportCompiler(
+            settlements=settlements,
+            totals=totals,
+            open_payments=open_payments,
+            summary=summary,
+            report=report
+        )
 
-totals = GenericDataset(config.Totals)
+    compiled = report_compiler.compile(ref_date="2026-02-28")
 
-summary = Summary(settlements.get_dataset())
+    report_writer = ExcelReportWriter(
+        output_dir=config.Paths.PROCESSED,
+        config=config
+    )
 
-report = Report(summary, receivable, open_payments, totals)
+    report_writer.write("2026-02-28", compiled)
 
-with pd.ExcelWriter(f"{config.Paths.PROCESSED}/relatorio-clubedamedalha-{ref_date}.xlsx", engine='openpyxl') as writer:
-    settlements.get_dataset().to_excel(writer, sheet_name=config.Excel.SETTLEMENTS_SHEET, index=False)
-    for x in settlements.get_dataset().Prf.unique():
-        for y  in settlements.get_dataset().Mot.unique():
-            settlements.get_dataset()[(settlements.get_dataset().Prf == x) & (settlements.get_dataset().Mot == y)].to_excel(writer, sheet_name=f"{x} {y}", index=False)
-    totals.get_dataset().to_excel(writer, sheet_name=config.Excel.TOTALS_SHEET, index=False)
-    open_payments.get_dataset().to_excel(writer, sheet_name=config.Excel.OPEN_PAYMENTS_SHEET, index=False)
-    summary.get_dataset().to_excel(writer, sheet_name=config.Excel.SUMMARY_SHEET, index=False)
-    report.get_report("2026-02-28").to_excel(writer, sheet_name=config.Excel.REPORT_SHEET, index=False)
+if __name__ == "__main__":
+    main()

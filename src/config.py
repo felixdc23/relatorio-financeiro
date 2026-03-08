@@ -5,13 +5,12 @@ class Paths:
 
 class Excel:
     EXTENSION = ".xlsx"
-    SETTLEMENTS_SHEET = "Baixas"
-    PAYABLES_SHEET = "Saldo a receber"
-    OPEN_PAYMENTS_SHEET = "Saldo RA"
     SUMMARY_SHEET = "Resumo"
     REPORT_SHEET = "Relatorio"
+    OPEN_PAYMENT_SHEET = "Saldo RA"
     TOTALS_SHEET = "Saldo a receber"
 
+#RELATÓRIO DE TÍTULOS BAIXADOS NO MÊS
 class Settlement:
     FILENAME = "finr190.xlsx"
     SHEET_NAME = "Baixas"
@@ -24,12 +23,14 @@ class Receivable:
     SKIPROWS = 1
     HEADER = 0
 
+#RELATÓRIO DE TÍTULOS A RECEBER
 class Totals:
     FILENAME = "finr130.xlsx"
     SHEET_NAME = "Totais"
     SKIPROWS = 1
     HEADER = 0
 
+#RELATÓRIO DE SALDO RA
 class OpenPayment:
     FILENAME = "fina740.xlsx"
     SHEET_NAME = "Listagem do Browse"
@@ -38,3 +39,6 @@ class OpenPayment:
 
 # Extensões aceitas
 EXTENSIONS = ".xlsx"
+
+class Compiled:
+    FILENAME = "relatorio-clubedamedalha-"

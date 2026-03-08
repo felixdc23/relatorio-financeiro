@@ -1,8 +1,8 @@
 
 from pandas import DataFrame
 
-from src.generic_dataset import GenericDataset
-from src.summary import Summary
+from base.generic_dataset import GenericDataset
+from base.summary import Summary
 
 
 class Report():
