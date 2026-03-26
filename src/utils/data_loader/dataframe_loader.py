@@ -1,4 +1,4 @@
-from src.utils.data_loader import excel
+from utils import excel
 
 
 class DataFrameLoader:

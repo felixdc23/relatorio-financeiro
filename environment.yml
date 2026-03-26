@@ -1,4 +1,4 @@
-name: relatorio-de-baixas
+name: relatorio-financeiro
 channels:
   - conda-forge
   - defaults
@@ -12,6 +12,7 @@ dependencies:
   - openpyxl
   - numpy
   - pytest
+  - zlib
 
   # Jupyter
   - jupyterlab
@@ -19,5 +20,9 @@ dependencies:
   # Ferramentas úteis de desenvolvimento
   - pip
   - pip:
+      - streamlit
+      - protobuf==3.20.3
+      - pyinstaller
+      - pyinstaller-hooks-contrib
       - black       # formatação opcional
       - isort       # organização de imports

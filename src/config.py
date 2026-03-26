@@ -8,7 +8,7 @@ class Excel:
     SUMMARY_SHEET = "Resumo"
     REPORT_SHEET = "Relatorio"
     OPEN_PAYMENT_SHEET = "Saldo RA"
-    TOTALS_SHEET = "Saldo a receber"
+    RECEIVABLES_SHEET = "Saldo a receber"
 
 #RELATÓRIO DE TÍTULOS BAIXADOS NO MÊS
 class Settlement:

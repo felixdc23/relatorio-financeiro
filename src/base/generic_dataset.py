@@ -1,6 +1,5 @@
-from src.base.dataframe_loader import DataFrameLoader
-from src.config import Paths
-
+from utils.data_loader.dataframe_loader import DataFrameLoader
+from config import Paths
 
 class GenericDataset(DataFrameLoader):
 
