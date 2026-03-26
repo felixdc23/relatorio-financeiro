@@ -4,25 +4,12 @@ channels:
   - defaults
 
 dependencies:
-  # Versão do Python
   - python=3.11
-
-  # Bibliotecas principais
   - pandas
   - openpyxl
   - numpy
   - pytest
-  - zlib
-
-  # Jupyter
   - jupyterlab
-
-  # Ferramentas úteis de desenvolvimento
   - pip
   - pip:
       - streamlit
-      - protobuf==3.20.3
-      - pyinstaller
-      - pyinstaller-hooks-contrib
-      - black       # formatação opcional
-      - isort       # organização de imports
