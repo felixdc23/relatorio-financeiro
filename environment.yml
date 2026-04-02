@@ -1,22 +1,15 @@
-name: relatorio-de-baixas
+name: relatorio-financeiro
 channels:
   - conda-forge
   - defaults
 
 dependencies:
-  # Versão do Python
   - python=3.11
-
-  # Bibliotecas principais
   - pandas
   - openpyxl
   - numpy
-
-  # Jupyter
+  - pytest
   - jupyterlab
-
-  # Ferramentas úteis de desenvolvimento
   - pip
   - pip:
-      - black       # formatação opcional
-      - isort       # organização de imports
+      - streamlit

@@ -1,4 +1,4 @@
-from src.Utils.data_loader import excel
+from utils import excel
 
 
 class DataFrameLoader:
@@ -11,7 +11,7 @@ class DataFrameLoader:
             header=header
         )
 
-    def get(self):
+    def get_dataset(self):
         return self._df
 
     def head(self):
