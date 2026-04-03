@@ -111,13 +111,14 @@ if clicked and not st.session_state["running"]:
 
             report = reports.Report(
                 summary=summary,
-                receivable=receivables_ds,
+                receivables=receivables_ds,
                 open_payments=open_payments_ds,
                 totals=totals_ds,
             )
 
             compiler = reports.ReportCompiler(
                 settlements=settlements_ds,
+                receivables=receivables_ds,
                 totals=totals_ds,
                 open_payments=open_payments_ds,
                 summary=summary,
